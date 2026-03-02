@@ -27,6 +27,12 @@ chmod +x debian/setup.sh
 1. Installs build dependencies (`ninja-build`, `gettext`, `cmake`, `curl`, `build-essential`)
 2. Clones or updates `https://github.com/neovim/neovim` to `~/repos/neovim`
 3. Checks out the latest stable version tag (e.g. `v0.11.6`)
+   ```bash
+   # List all stable tags sorted by version (latest first)
+   git tag --sort=-v:refname | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$'
+   # Check out the latest one
+   git checkout "$(git tag --sort=-v:refname | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' | head -1)"
+   ```
 4. Builds with `CMAKE_BUILD_TYPE=Release`
 5. Installs to `/usr/local` via `sudo make install`
 6. Installs LazyVim dependencies and starter config
