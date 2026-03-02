@@ -163,6 +163,7 @@ return {
       vim.opt.mousemoveevent = true
       vim.opt.cursorline = true
       vim.opt.smoothscroll = true
+      vim.opt.relativenumber = false
     end,
   },
 }
