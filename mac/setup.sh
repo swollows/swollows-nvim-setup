@@ -48,6 +48,18 @@ setup_lazyvim() {
     info "LazyVim starter installed. Plugins will be installed on first launch."
 }
 
+clean_lazyvim_config() {
+    info "Removing existing LazyVim custom settings..."
+
+    local plugins_dir="$HOME/.config/nvim/lua/plugins"
+    if [ -d "$plugins_dir" ]; then
+        rm -f "$plugins_dir"/*.lua
+        info "Cleared all files in $plugins_dir"
+    else
+        warn "$plugins_dir does not exist, skipping cleanup"
+    fi
+}
+
 setup_cursor_and_ai_tools() {
     info "Step C: Configuring mouse cursor, Claude Code, and Gemini CLI..."
 
@@ -198,6 +210,7 @@ main() {
             setup_cursor_and_ai_tools
             ;;
         3)
+            clean_lazyvim_config
             setup_cursor_and_ai_tools
             ;;
         4)
