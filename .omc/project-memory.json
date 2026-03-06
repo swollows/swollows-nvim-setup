@@ -1,0 +1,72 @@
+{
+  "version": "1.0.0",
+  "lastScanned": 1772730887314,
+  "projectRoot": "/home/ubuntu/repos/swollows-nvim-setup",
+  "techStack": {
+    "languages": [],
+    "frameworks": [],
+    "packageManager": null,
+    "runtime": null
+  },
+  "build": {
+    "buildCommand": null,
+    "testCommand": null,
+    "lintCommand": null,
+    "devCommand": null,
+    "scripts": {}
+  },
+  "conventions": {
+    "namingStyle": null,
+    "importStyle": null,
+    "testPattern": null,
+    "fileOrganization": null
+  },
+  "structure": {
+    "isMonorepo": false,
+    "workspaces": [],
+    "mainDirectories": [],
+    "gitBranches": null
+  },
+  "customNotes": [],
+  "directoryMap": {
+    "debian": {
+      "path": "debian",
+      "purpose": null,
+      "fileCount": 1,
+      "lastAccessed": 1772730887301,
+      "keyFiles": [
+        "setup.sh"
+      ]
+    },
+    "mac": {
+      "path": "mac",
+      "purpose": null,
+      "fileCount": 1,
+      "lastAccessed": 1772730887308,
+      "keyFiles": [
+        "setup.sh"
+      ]
+    }
+  },
+  "hotPaths": [
+    {
+      "path": "debian/setup.sh",
+      "accessCount": 17,
+      "lastAccessed": 1772761251382,
+      "type": "file"
+    },
+    {
+      "path": "mac/setup.sh",
+      "accessCount": 14,
+      "lastAccessed": 1772761259144,
+      "type": "file"
+    },
+    {
+      "path": "README.md",
+      "accessCount": 11,
+      "lastAccessed": 1772761115196,
+      "type": "file"
+    }
+  ],
+  "userDirectives": []
+}

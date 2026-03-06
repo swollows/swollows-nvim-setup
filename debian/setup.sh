@@ -10,7 +10,7 @@ set -euo pipefail
 #   c) Builds Neovim from source
 #   d) Installs Neovim system-wide
 #   e) Installs and sets up LazyVim
-#   f) Configures mouse cursor, smear-cursor, neoscroll, and OpenCode integration
+#   f) Configures mouse cursor, smear-cursor, neoscroll, Claude Code, and Gemini CLI integration
 # ==============================================================================
 
 NEOVIM_REPO="https://github.com/neovim/neovim.git"
@@ -148,10 +148,10 @@ setup_lazyvim() {
 }
 
 # ==============================================================================
-# Step F: Setup mouse cursor and OpenCode integration
+# Step F: Setup mouse cursor, Claude Code, and Gemini CLI integration
 # ==============================================================================
-setup_cursor_and_opencode() {
-    info "Step F: Configuring mouse cursor and OpenCode..."
+setup_cursor_and_ai_tools() {
+    info "Step F: Configuring mouse cursor, Claude Code, and Gemini CLI..."
 
     # --- Mouse configuration ---
     cat > ~/.config/nvim/lua/plugins/mouse.lua << 'EOF'
@@ -194,8 +194,8 @@ return {
 }
 EOF
 
-    # --- OpenCode integration ---
-    cat > ~/.config/nvim/lua/plugins/opencode.lua << 'EOF'
+    # --- Claude Code & Gemini CLI integration ---
+    cat > ~/.config/nvim/lua/plugins/ai-tools.lua << 'EOF'
 return {
   {
     "folke/snacks.nvim",
@@ -215,28 +215,12 @@ return {
         desc = "Shell terminal toggle",
       },
 
-      -- OpenCode bottom panel
-      {
-        "<leader>ao",
-        function()
-          Snacks.terminal.toggle("opencode", {
-            env = { id = "opencode_bottom" },
-            win = {
-              position = "bottom",
-              height = 0.4,
-            },
-          })
-        end,
-        mode = { "n", "t" },
-        desc = "OpenCode bottom panel",
-      },
-
-      -- OpenCode right panel (Cursor-style sidebar)
+      -- Claude Code right panel
       {
         "<leader>av",
         function()
-          Snacks.terminal.toggle("opencode", {
-            env = { id = "opencode_right" },
+          Snacks.terminal.toggle("claude", {
+            env = { id = "claude_right" },
             win = {
               position = "right",
               width = 0.45,
@@ -244,34 +228,34 @@ return {
           })
         end,
         mode = { "n", "t" },
-        desc = "OpenCode right panel",
+        desc = "Claude Code right panel",
       },
 
-      -- OpenCode floating window
+      -- Gemini CLI floating window
       {
         "<leader>af",
         function()
-          Snacks.terminal.toggle("opencode", {
-            env = { id = "opencode_float" },
+          Snacks.terminal.toggle("gemini", {
+            env = { id = "gemini_float" },
             win = {
               position = "float",
               width = 0.85,
               height = 0.85,
               border = "rounded",
-              title = " OpenCode AI ",
+              title = " Gemini CLI ",
               title_pos = "center",
             },
           })
         end,
         mode = { "n", "t" },
-        desc = "OpenCode floating window",
+        desc = "Gemini CLI floating window",
       },
     },
   },
 }
 EOF
 
-    info "Mouse cursor, smear-cursor, neoscroll, and OpenCode configuration complete."
+    info "Mouse cursor, smear-cursor, neoscroll, Claude Code, and Gemini CLI configuration complete."
 }
 
 # ==============================================================================
@@ -288,7 +272,7 @@ main() {
     build_neovim
     install_neovim
     setup_lazyvim
-    setup_cursor_and_opencode
+    setup_cursor_and_ai_tools
 
     echo
     info "========================================="
@@ -298,11 +282,10 @@ main() {
     info "Launch Neovim to finish plugin installation:"
     info "  nvim"
     info ""
-    info "OpenCode keybindings:"
+    info "AI tool keybindings:"
     info "  <C-\`>      - Shell terminal toggle"
-    info "  <leader>ao - OpenCode bottom panel"
-    info "  <leader>av - OpenCode right panel"
-    info "  <leader>af - OpenCode floating window"
+    info "  <leader>av - Claude Code right panel"
+    info "  <leader>af - Gemini CLI floating window"
 }
 
 main "$@"

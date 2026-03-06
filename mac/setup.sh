@@ -48,8 +48,8 @@ setup_lazyvim() {
     info "LazyVim starter installed. Plugins will be installed on first launch."
 }
 
-setup_cursor_and_opencode() {
-    info "Step C: Configuring mouse cursor and OpenCode..."
+setup_cursor_and_ai_tools() {
+    info "Step C: Configuring mouse cursor, Claude Code, and Gemini CLI..."
 
     cat > ~/.config/nvim/lua/plugins/mouse.lua << 'EOF'
 return {
@@ -88,11 +88,12 @@ return {
 }
 EOF
 
-    cat > ~/.config/nvim/lua/plugins/opencode.lua << 'EOF'
+    cat > ~/.config/nvim/lua/plugins/ai-tools.lua << 'EOF'
 return {
   {
     "folke/snacks.nvim",
     keys = {
+      -- Shell terminal toggle
       {
         "<C-`>",
         function()
@@ -107,26 +108,12 @@ return {
         desc = "Shell terminal toggle",
       },
 
-      {
-        "<leader>ao",
-        function()
-          Snacks.terminal.toggle("opencode", {
-            env = { id = "opencode_bottom" },
-            win = {
-              position = "bottom",
-              height = 0.4,
-            },
-          })
-        end,
-        mode = { "n", "t" },
-        desc = "OpenCode bottom panel",
-      },
-
+      -- Claude Code right panel
       {
         "<leader>av",
         function()
-          Snacks.terminal.toggle("opencode", {
-            env = { id = "opencode_right" },
+          Snacks.terminal.toggle("claude", {
+            env = { id = "claude_right" },
             win = {
               position = "right",
               width = 0.45,
@@ -134,33 +121,34 @@ return {
           })
         end,
         mode = { "n", "t" },
-        desc = "OpenCode right panel",
+        desc = "Claude Code right panel",
       },
 
+      -- Gemini CLI floating window
       {
         "<leader>af",
         function()
-          Snacks.terminal.toggle("opencode", {
-            env = { id = "opencode_float" },
+          Snacks.terminal.toggle("gemini", {
+            env = { id = "gemini_float" },
             win = {
               position = "float",
               width = 0.85,
               height = 0.85,
               border = "rounded",
-              title = " OpenCode AI ",
+              title = " Gemini CLI ",
               title_pos = "center",
             },
           })
         end,
         mode = { "n", "t" },
-        desc = "OpenCode floating window",
+        desc = "Gemini CLI floating window",
       },
     },
   },
 }
 EOF
 
-    info "Mouse cursor, smear-cursor, neoscroll, and OpenCode configuration complete."
+    info "Mouse cursor, smear-cursor, neoscroll, Claude Code, and Gemini CLI configuration complete."
 }
 
 main() {
@@ -171,7 +159,7 @@ main() {
 
     install_neovim
     setup_lazyvim
-    setup_cursor_and_opencode
+    setup_cursor_and_ai_tools
 
     echo
     info "========================================="
@@ -181,11 +169,10 @@ main() {
     info "Launch Neovim to finish plugin installation:"
     info "  nvim"
     info ""
-    info "OpenCode keybindings:"
+    info "AI tool keybindings:"
     info "  <C-\`>      - Shell terminal toggle"
-    info "  <leader>ao - OpenCode bottom panel"
-    info "  <leader>av - OpenCode right panel"
-    info "  <leader>af - OpenCode floating window"
+    info "  <leader>av - Claude Code right panel"
+    info "  <leader>af - Gemini CLI floating window"
 }
 
 main "$@"

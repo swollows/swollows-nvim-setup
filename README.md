@@ -1,6 +1,6 @@
 # swollows-neovim-setup
 
-Neovim setup scripts for Debian/Ubuntu and macOS. Installs Neovim, [LazyVim](https://www.lazyvim.org/), and configures [OpenCode](https://github.com/opencode-ai/opencode) integration with smooth cursor effects.
+Neovim setup scripts for Debian/Ubuntu and macOS. Installs Neovim, [LazyVim](https://www.lazyvim.org/), and configures [Claude Code](https://docs.anthropic.com/en/docs/claude-code) and [Gemini CLI](https://github.com/google-gemini/gemini-cli) integration with smooth cursor effects.
 
 ## What Gets Installed
 
@@ -11,7 +11,8 @@ Neovim setup scripts for Debian/Ubuntu and macOS. Installs Neovim, [LazyVim](htt
 | ripgrep, fd, lazygit, node | apt + manual install | Homebrew |
 | smear-cursor.nvim | Plugin | Plugin |
 | neoscroll.nvim | Plugin | Plugin |
-| OpenCode terminal integration | Plugin config | Plugin config |
+| Claude Code terminal integration | Plugin config | Plugin config |
+| Gemini CLI terminal integration | Plugin config | Plugin config |
 
 ## Debian / Ubuntu
 
@@ -36,7 +37,7 @@ chmod +x debian/setup.sh
 4. Builds with `CMAKE_BUILD_TYPE=Release`
 5. Installs to `/usr/local` via `sudo make install`
 6. Installs LazyVim dependencies and starter config
-7. Configures mouse, smear-cursor, neoscroll, and OpenCode keybindings
+7. Configures mouse, smear-cursor, neoscroll, Claude Code, and Gemini CLI keybindings
 
 ## macOS
 
@@ -56,18 +57,17 @@ chmod +x mac/setup.sh
 1. Installs Neovim via `brew install neovim`
 2. Installs dependencies (`ripgrep`, `fd`, `lazygit`, `node`) via Homebrew
 3. Clones LazyVim starter config
-4. Configures mouse, smear-cursor, neoscroll, and OpenCode keybindings
+4. Configures mouse, smear-cursor, neoscroll, Claude Code, and Gemini CLI keybindings
 
-## OpenCode Keybindings
+## AI Tool Keybindings
 
 After setup, the following keybindings are available in Neovim:
 
 | Key | Description |
 |---|---|
 | `Ctrl+`` ` | Shell terminal toggle |
-| `<leader>ao` | OpenCode bottom panel (40% height) |
-| `<leader>av` | OpenCode right panel (45% width) |
-| `<leader>af` | OpenCode floating window (85% viewport) |
+| `<leader>av` | Claude Code right panel (45% width) |
+| `<leader>af` | Gemini CLI floating window (85% viewport) |
 
 ## Post-Install
 
