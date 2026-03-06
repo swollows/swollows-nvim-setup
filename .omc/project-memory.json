@@ -51,20 +51,20 @@
   "hotPaths": [
     {
       "path": "debian/setup.sh",
-      "accessCount": 19,
-      "lastAccessed": 1772761598383,
+      "accessCount": 27,
+      "lastAccessed": 1772763873983,
       "type": "file"
     },
     {
       "path": "mac/setup.sh",
-      "accessCount": 16,
-      "lastAccessed": 1772761608762,
+      "accessCount": 23,
+      "lastAccessed": 1772767996684,
       "type": "file"
     },
     {
       "path": "README.md",
-      "accessCount": 13,
-      "lastAccessed": 1772761630513,
+      "accessCount": 14,
+      "lastAccessed": 1772763374059,
       "type": "file"
     }
   ],

@@ -136,24 +136,20 @@ return {
         desc = "Claude Code right panel",
       },
 
-      -- Gemini CLI floating window
+      -- Gemini CLI right panel
       {
         "<leader>af",
         function()
           Snacks.terminal.toggle("gemini", {
-            env = { id = "gemini_float" },
+            env = { id = "gemini_right" },
             win = {
-              position = "float",
-              width = 0.85,
-              height = 0.85,
-              border = "rounded",
-              title = " Gemini CLI ",
-              title_pos = "center",
+              position = "right",
+              width = 0.45,
             },
           })
         end,
         mode = { "n", "t" },
-        desc = "Gemini CLI floating window",
+        desc = "Gemini CLI right panel",
       },
     },
   },
@@ -193,7 +189,7 @@ finish_message() {
     info "AI tool keybindings:"
     info "  <C-\`>      - Shell terminal toggle"
     info "  <leader>av - Claude Code right panel"
-    info "  <leader>af - Gemini CLI floating window"
+    info "  <leader>af - Gemini CLI right panel"
 }
 
 main() {
