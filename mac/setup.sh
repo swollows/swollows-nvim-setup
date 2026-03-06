@@ -151,16 +151,25 @@ EOF
     info "Mouse cursor, smear-cursor, neoscroll, Claude Code, and Gemini CLI configuration complete."
 }
 
-main() {
+# ==============================================================================
+# Menu
+# ==============================================================================
+show_menu() {
+    echo
     info "========================================="
     info "  Neovim Setup for macOS"
     info "========================================="
     echo
+    echo "  1) Neovim installation      (Homebrew install + LazyVim + config)"
+    echo "  2) LazyVim installation      (LazyVim starter + config)"
+    echo "  3) LazyVim customization     (cursor, AI tools config only)"
+    echo "  4) All                       (full setup from scratch)"
+    echo
+    read -rp "Select an option [1-4]: " choice
+    echo
+}
 
-    install_neovim
-    setup_lazyvim
-    setup_cursor_and_ai_tools
-
+finish_message() {
     echo
     info "========================================="
     info "  Setup complete!"
@@ -173,6 +182,35 @@ main() {
     info "  <C-\`>      - Shell terminal toggle"
     info "  <leader>av - Claude Code right panel"
     info "  <leader>af - Gemini CLI floating window"
+}
+
+main() {
+    show_menu
+
+    case "$choice" in
+        1)
+            install_neovim
+            setup_lazyvim
+            setup_cursor_and_ai_tools
+            ;;
+        2)
+            setup_lazyvim
+            setup_cursor_and_ai_tools
+            ;;
+        3)
+            setup_cursor_and_ai_tools
+            ;;
+        4)
+            install_neovim
+            setup_lazyvim
+            setup_cursor_and_ai_tools
+            ;;
+        *)
+            error "Invalid option: $choice"
+            ;;
+    esac
+
+    finish_message
 }
 
 main "$@"

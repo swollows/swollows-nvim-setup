@@ -14,6 +14,17 @@ Neovim setup scripts for Debian/Ubuntu and macOS. Installs Neovim, [LazyVim](htt
 | Claude Code terminal integration | Plugin config | Plugin config |
 | Gemini CLI terminal integration | Plugin config | Plugin config |
 
+## Setup Options
+
+Both scripts present an interactive menu at startup:
+
+| Option | Description | What it does |
+|---|---|---|
+| **1) Neovim installation** | Start from Neovim | Install Neovim + LazyVim + customization |
+| **2) LazyVim installation** | Start from LazyVim | Install LazyVim starter + customization (Neovim already installed) |
+| **3) LazyVim customization** | Config only | Apply cursor, AI tools config (LazyVim already installed) |
+| **4) All** | Full setup | Same as option 1 — everything from scratch |
+
 ## Debian / Ubuntu
 
 Clones the Neovim repository, checks out the latest stable release tag, builds from source, and installs system-wide.
